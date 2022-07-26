@@ -1,0 +1,23 @@
+.container{
+    width: 262px;
+    display: flex;
+    flex-direction: column;
+}
+.name{
+    font-size: 28px;
+    font-weight: 600;
+    text-align: center;
+    margin: 5px 0px;
+}
+
+.year_price{
+    color: #191919;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 400;
+}
+.thumbnail{
+width: 260px;
+height: 195px;
+object-fit: contain;   
+}

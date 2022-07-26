@@ -1,0 +1,74 @@
+main{
+    display: grid;
+    grid-template-columns: 10% 80% 10%;
+    grid-template-rows: 70px ;
+    grid-template-areas: 
+    "header header header"
+    ". content ."
+    ;
+}
+header{
+    display: flex;
+    justify-content: space-between;
+    grid-area: header;
+    display: grid;
+    grid-template-columns: 10% 80% 10%;
+    grid-template-areas: ". nav menu";
+    align-items: center;
+    border-bottom: solid 1px #D8D8D8;
+}
+main > section {
+    grid-area: content;
+}
+header > div {
+    grid-area: nav
+}
+header > nav {
+    grid-area: menu
+}
+button{
+    background-color: transparent;
+    border: 0px;
+    font-size: 14px;
+    cursor: pointer;
+    font-weight: 600;
+    color: #191919;
+    width: 150px;
+}
+
+h1{
+    color: #373737;
+    font-size: 50px;
+    margin: 60px 0px;
+}
+ul{
+    padding: 0px;
+    display: flex;
+}
+nav {
+    display: flex;
+    justify-content: space-between;
+}
+section > nav {
+    border-bottom: solid 1px #D8D8D8;
+}
+ul > span {
+    font-size:14px;
+    font-weight: 600;
+    color: #373737;
+}
+li {
+    list-style: none;
+    width: auto;
+    margin: 0px 20px;
+    font-size:14px;
+    font-weight:400;
+    color:#373737
+}
+section > section {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    column-gap: 10px;
+    row-gap: 10px;
+    margin-top: 50px;
+}
