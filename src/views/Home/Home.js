@@ -1,40 +1,45 @@
 import { useEffect, useState } from "react";
-import Card from "../../components/Card/Card";
-import { getAllModels } from "../../services/vehicleModels";
+import { getAllModels, getModelDetails } from "../../services/vehicleModels";
 import MenuIcon from "../../components/Icons/Menu";
 import Logo from "../../components/Icons/Logo";
+import ModelDetails from "../../components/ModelDetails/ModelDetails";
+import AllModels from "../../components/AllModels/AllModels";
 import {
   PrincipalMain,
   Header,
   ButtonWrap,
   ButtonNavigation,
   Menu,
-  GridModels,
-  Content,
-  PrincipalTitle,
-  Filters,
-  Nav,
-  ListFilters,
-  FilterTitle,
-  WrapOrderBy,
-  ListOrderBy,
   Footer,
   LogoContainer,
 } from "./styles";
-import DropdownMenu from "../../components/DropdownMenu/DropdownMenu";
+// import DropdownMenu from "../../components/DropdownMenu/DropdownMenu";
 
 export default function Home() {
+  // ---- ENUMS-----------
+  const VIEWS = {
+    MODELS: 1,
+    SELECTED_MODEL: 2,
+  };
+
+  // ----------- USE STATE ------------------
+  const [selectedModel, setSelectedModel] = useState(null);
+  const [selectedView, setSelectedView] = useState(VIEWS.MODELS);
+  const [modelDetails, setModelDetail] = useState(null);
   const [models, setModels] = useState([]);
-  const [displayOrderBy, setDisplayOrderBy] = useState(false);
-  const [selectedModelId, setSelectedModelId] = useState(null);
+
+  // -------------USE EFFECTS ---------------
   useEffect(() => {
     getAllModels().then(setModels);
   }, []);
 
   useEffect(() => {
-    setSelectedModelId(models[0]?.id);
-    console.log(models);
+    setSelectedModel(models[0]);
   }, [models]);
+
+  useEffect(() => {
+    console.log("modelDetails", modelDetails);
+  }, [modelDetails]);
 
   return (
     <PrincipalMain>
@@ -44,60 +49,36 @@ export default function Home() {
           <Logo />
         </LogoContainer>
         <ButtonWrap>
-          <ButtonNavigation active>Modelos</ButtonNavigation>
-          <ButtonNavigation>Ficha de modelo</ButtonNavigation>
+          <ButtonNavigation
+            active={selectedView === VIEWS.MODELS}
+            onClick={() => setSelectedView(VIEWS.MODELS)}
+          >
+            Modelos
+          </ButtonNavigation>
+          <ButtonNavigation
+            active={selectedView === VIEWS.SELECTED_MODEL}
+            onClick={() => {
+              setSelectedView(VIEWS.SELECTED_MODEL);
+              getModelDetails(selectedModel.id).then(setModelDetail);
+            }}
+          >
+            Ficha de modelo
+          </ButtonNavigation>
         </ButtonWrap>
         <Menu>
           menú <MenuIcon />
         </Menu>
       </Header>
-      <Content>
-        <PrincipalTitle>Descubrí todos los modelos</PrincipalTitle>
-        <Nav>
-          <Filters>
-            <FilterTitle>Filtrar por</FilterTitle>
-            <ListFilters>Todos</ListFilters>
-            <ListFilters>Autos</ListFilters>
-            <ListFilters>Pickups y comerciales</ListFilters>
-            <ListFilters>SUVs y Crossovers</ListFilters>
-          </Filters>
-          <ul className="order_by">
-            <span
-              onClick={() => setDisplayOrderBy(!displayOrderBy)}
-              style={{ cursor: "pointer" }}
-            >
-              Ordenar por
-            </span>
-            <WrapOrderBy display={displayOrderBy}>
-              <ListOrderBy>Nada</ListOrderBy>
-              <ListOrderBy>
-                De <strong> menor </strong> a <strong> mayor </strong>precio
-              </ListOrderBy>
-              <ListOrderBy>
-                De <strong> mayor </strong> a <strong> menor </strong>precio
-              </ListOrderBy>
-              <ListOrderBy>
-                Más <strong> nuevos </strong> primero
-              </ListOrderBy>
-              <ListOrderBy>
-                Más <strong> viejos </strong> primero
-              </ListOrderBy>
-            </WrapOrderBy>
-          </ul>
-        </Nav>
-        <GridModels>
-          {models.map((model) => (
-            <Card
-              name={model.name}
-              year={model.year}
-              thumbnail={model.thumbnail}
-              price={model.price}
-              selected={selectedModelId === model.id}
-              onClick={() => setSelectedModelId(model.id)}
-            />
-          ))}
-        </GridModels>
-      </Content>
+      {selectedView === VIEWS.SELECTED_MODEL ? (
+        <ModelDetails details={modelDetails}/>
+      ) : (
+        <AllModels
+          selectedModel={selectedModel}
+          setSelectedModel={setSelectedModel}
+          models={models}
+        />
+      )}
+
       <Footer></Footer>
     </PrincipalMain>
   );
