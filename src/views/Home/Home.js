@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
-import { getAllModels, getModelDetails } from "../../services/vehicleModels";
+import { getModelDetails } from "../../services/vehicleModels";
 import MenuIcon from "../../components/Icons/Menu";
 import Logo from "../../components/Icons/Logo";
 import ModelDetails from "../../components/ModelDetails/ModelDetails";
 import AllModels from "../../components/AllModels/AllModels";
+import useVehicleModels from "../../hooks/useVehicleModels";
 import {
   PrincipalMain,
   Header,
@@ -12,8 +13,10 @@ import {
   Menu,
   Footer,
   LogoContainer,
+  TitleMenu,
 } from "./styles";
-// import DropdownMenu from "../../components/DropdownMenu/DropdownMenu";
+import DropdownMenu from "../../components/DropdownMenu/DropdownMenu";
+import Loader from "../../components/Loader/Loader";
 
 export default function Home() {
   // ---- ENUMS-----------
@@ -26,26 +29,32 @@ export default function Home() {
   const [selectedModel, setSelectedModel] = useState(null);
   const [selectedView, setSelectedView] = useState(VIEWS.MODELS);
   const [modelDetails, setModelDetail] = useState(null);
-  const [models, setModels] = useState([]);
-
+  const [displayDropdownMenu, setDisplayDropdownMenu] = useState(false);
+  const { models, modelsDetails, filterModelsBySegment, orderBy, isLoading } =
+    useVehicleModels();
   // -------------USE EFFECTS ---------------
-  useEffect(() => {
-    getAllModels().then(setModels);
-  }, []);
-
+  const openMenu = () => {
+    setDisplayDropdownMenu(true);
+  };
+  const closeMenu = () => {
+    setDisplayDropdownMenu(false);
+  };
   useEffect(() => {
     setSelectedModel(models[0]);
   }, [models]);
 
   useEffect(() => {
-    console.log("modelDetails", modelDetails);
-  }, [modelDetails]);
-
+    console.log("modelsDetails", { models, modelsDetails });
+  }, [models, modelsDetails]);
+  const goToModelDetails = () => {
+    setModelDetail(null);
+    setSelectedView(VIEWS.SELECTED_MODEL);
+    getModelDetails(selectedModel.id).then(setModelDetail);
+  };
   return (
     <PrincipalMain>
-      {/*<DropdownMenu />*/}
       <Header>
-        <LogoContainer>
+        <LogoContainer onClick={() => setSelectedView(VIEWS.MODELS)}>
           <Logo />
         </LogoContainer>
         <ButtonWrap>
@@ -57,25 +66,27 @@ export default function Home() {
           </ButtonNavigation>
           <ButtonNavigation
             active={selectedView === VIEWS.SELECTED_MODEL}
-            onClick={() => {
-              setSelectedView(VIEWS.SELECTED_MODEL);
-              getModelDetails(selectedModel.id).then(setModelDetail);
-            }}
+            onClick={goToModelDetails}
           >
             Ficha de modelo
           </ButtonNavigation>
         </ButtonWrap>
-        <Menu>
-          menú <MenuIcon />
+        <Menu onClick={openMenu}>
+          <TitleMenu>menú</TitleMenu> <MenuIcon />
         </Menu>
       </Header>
+      {displayDropdownMenu && <DropdownMenu closeMenu={closeMenu} />}
       {selectedView === VIEWS.SELECTED_MODEL ? (
-        <ModelDetails details={modelDetails}/>
+        <ModelDetails details={modelDetails} />
       ) : (
         <AllModels
+          isLoading={isLoading}
           selectedModel={selectedModel}
           setSelectedModel={setSelectedModel}
           models={models}
+          goToModelDetails={goToModelDetails}
+          filterModelsBySegment={filterModelsBySegment}
+          orderBy={orderBy}
         />
       )}
 

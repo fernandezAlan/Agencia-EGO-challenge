@@ -4,40 +4,14 @@ export const PrincipalTitle = styled.h1`
   color: #373737;
   font-size: 50px;
   margin: 60px 0px;
+  @media screen and (max-width: 600px) {
+    font-size: 35px;
+    color: #191919;
+  }
 `;
 
 export const Content = styled.section`
   grid-area: content;
-`;
-
-export const Filters = styled.ul`
-  padding: 0px;
-  display: flex;
-`;
-
-export const Nav = styled.nav`
-  display: flex;
-  justify-content: space-between;
-  border-bottom: solid 1px #d8d8d8;
-`;
-
-export const FilterTitle = styled.span`
-  font-size: 14px;
-  font-weight: 600;
-  color: #373737;
-`;
-
-export const WrapOrderBy = styled.div`
-  position: absolute;
-  z-index: 1;
-  background: #ffffff;
-  box-shadow: 2px 8px 20px rgba(0, 0, 0, 0.1);
-  border-radius: 6px;
-  width: 170px;
-  height: 182px;
-  display: ${(props) => (props.display ? "grid" : "none")};
-  grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
-  right: 10%;
 `;
 
 export const ListOrderBy = styled.li`
@@ -58,12 +32,10 @@ export const GridModels = styled.section`
   column-gap: 20px;
   row-gap: 75px;
   margin-top: 50px;
+  @media screen and (max-width: 600px) {
+    grid-template-columns: 100%;
+    margin-bottom: 50px;
+  }
 `;
-export const ListFilters = styled.li`
-  list-style: none;
-  width: auto;
-  margin: 0px 20px;
-  font-size: 14px;
-  font-weight: 400;
-  color: #373737;
-`;
+
+

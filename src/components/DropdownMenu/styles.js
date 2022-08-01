@@ -14,6 +14,7 @@ export const MenuContainer = styled.section`
     "header header"
     "content ."
     "extraContent extraContent";
+  z-index: 2;
 `;
 
 export const Header = styled.header`

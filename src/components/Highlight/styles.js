@@ -1,9 +1,14 @@
 import styled from "styled-components";
 
-export const Conteiner = styled.article`
+export const Container = styled.article`
   width: 300px;
   display: flex;
   flex-direction: column;
+  margin-bottom: 70px;
+  @media screen and (max-width: 600px) {
+    width: 100vw;
+    margin: 0px 50px;
+  }
 `;
 export const Image = styled.img`
   height: 147px;

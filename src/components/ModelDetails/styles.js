@@ -8,6 +8,11 @@ export const DetailsContainer = styled.section`
     ". intro ."
     "slider slider slider"
     ". features .";
+  @media screen and (max-width: 600px) {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+  }
 `;
 
 export const Intro = styled.section`
@@ -16,6 +21,11 @@ export const Intro = styled.section`
   column-gap: 30px;
   display: grid;
   grid-template-columns: 55% 45%;
+  @media screen and (max-width: 600px) {
+    display: block;
+    padding: 0px 15px;
+    margin-bottom: 80px;
+  }
 `;
 
 export const IntroIMG = styled.img`
@@ -23,6 +33,9 @@ export const IntroIMG = styled.img`
   object-fit: contain;
   transform: scaleX(-1);
   align-self: center;
+  @media screen and (max-width: 600px) {
+    width: 100%;
+  }
 `;
 
 export const ModelName = styled.h2`
@@ -37,6 +50,10 @@ export const Title = styled.h1`
   font-weight: 600;
   font-size: 50px;
   margin: 0px;
+  @media screen and (max-width: 600px) {
+    font-size: 35px;
+    color: #191919;
+  }
 `;
 
 export const Slider = styled.section`
@@ -44,6 +61,22 @@ export const Slider = styled.section`
   display: flex;
   column-gap: 20px;
   justify-content: center;
+  @media screen and (max-width: 600px) {
+    flex-direction: row;
+    align-items: center;
+    justify-content: start;
+    overflow-x: scroll;
+    margin-bottom: 70px;
+    align-items: start;
+  }
+  &::-webkit-scrollbar {
+    height: 8px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: #4a4a4a;
+    border-radius: 20px;
+    margin: 10px;
+  }
 `;
 
 export const FeaturesContainer = styled.section`
@@ -52,4 +85,12 @@ export const FeaturesContainer = styled.section`
   display: flex;
   flex-direction: column;
   margin-bottom: 50px;
+`;
+
+export const Description = styled.p`
+  @media screen and (max-width: 600px) {
+    font-size: 16px;
+    font-weight: 400;
+    color: #373737;
+  }
 `;

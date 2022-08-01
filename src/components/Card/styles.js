@@ -36,7 +36,11 @@ export const ThumbnailImg = styled.img`
 
 export const ModelContainer = styled.section`
   width: 262px;
+  height: 218px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  @media screen and (max-width: 600px) {
+    justify-self: center;
+  }
 `;

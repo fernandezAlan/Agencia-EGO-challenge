@@ -11,3 +11,8 @@ export const getModelDetails = async (id) => {
   const response = await data.json();
   return response;
 };
+
+export const getAllModelsDetails = (allIds) => {
+  const promises = allIds.map((id) => getModelDetails(id));
+  return Promise.all(promises);
+};

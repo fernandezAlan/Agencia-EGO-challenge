@@ -5,10 +5,17 @@ export const Container = styled.article`
   grid-template-columns: 270px 500px 270px;
   grid-template-areas: ${(props) =>
     props.reverse ? '". description  image"' : '"image description ."'};
+
+  @media screen and (max-width: 600px) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 `;
 export const Image = styled.img`
   grid-area: image;
   width: 270px;
+  border-radius: 10px;
 `;
 
 export const DescriptionContainer = styled.div`
@@ -19,6 +26,9 @@ export const DescriptionContainer = styled.div`
   justify-content: center;
   width: 300px;
   justify-self: center;
+  @media screen and (max-width: 600px) {
+    width: 270px;
+  }
 `;
 export const Name = styled.h3`
   font-style: normal;

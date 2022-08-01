@@ -7,6 +7,10 @@ export const PrincipalMain = styled.main`
     "header header header"
     ". content ."
     "footer footer footer";
+  @media screen and (max-width: 600px) {
+    display: block;
+    padding: 0px 10px;
+  }
 `;
 export const Header = styled.header`
   display: flex;
@@ -17,9 +21,16 @@ export const Header = styled.header`
   grid-template-areas: ". nav menu";
   align-items: center;
   border-bottom: solid 1px #d8d8d8;
+  @media screen and (max-width: 600px) {
+    grid-template-columns: 20% 60% 20%;
+    height: 70px;
+  }
 `;
 export const ButtonWrap = styled.div`
   grid-area: nav;
+  @media screen and (max-width: 600px) {
+    display: none;
+  }
 `;
 export const ButtonNavigation = styled.button`
   background-color: transparent;
@@ -52,4 +63,10 @@ export const LogoContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+`;
+
+export const TitleMenu = styled.span`
+  @media screen and (max-width: 600px) {
+    display: none;
+  }
 `;

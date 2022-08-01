@@ -1,63 +1,41 @@
-import { useState } from "react";
 import Card from "../Card/Card";
-import {
-  Content,
-  PrincipalTitle,
-  Nav,
-  Filters,
-  FilterTitle,
-  ListFilters,
-  WrapOrderBy,
-  ListOrderBy,
-  GridModels,
-} from "./styles";
-export default function AllModels({ selectedModel, setSelectedModel, models }) {
-  const [displayOrderBy, setDisplayOrderBy] = useState(false);
-
+import { Content, PrincipalTitle, GridModels } from "./styles";
+import { LoaderContainer } from "../../style/StyledComponents";
+import Filters from "../Filters/Filters";
+import Loader from "../Loader/Loader";
+export default function AllModels({
+  selectedModel,
+  setSelectedModel,
+  models,
+  goToModelDetails,
+  filterModelsBySegment,
+  orderBy,
+  isLoading,
+}) {
+  if (isLoading)
+    return (
+      <LoaderContainer>
+        <Loader />;
+      </LoaderContainer>
+    );
   return (
     <Content>
       <PrincipalTitle>Descubrí todos los modelos</PrincipalTitle>
-      <Nav>
-        <Filters>
-          <FilterTitle>Filtrar por</FilterTitle>
-          <ListFilters>Todos</ListFilters>
-          <ListFilters>Autos</ListFilters>
-          <ListFilters>Pickups y comerciales</ListFilters>
-          <ListFilters>SUVs y Crossovers</ListFilters>
-        </Filters>
-        <ul className="order_by">
-          <span
-            onClick={() => setDisplayOrderBy(!displayOrderBy)}
-            style={{ cursor: "pointer" }}
-          >
-            Ordenar por
-          </span>
-          <WrapOrderBy display={displayOrderBy}>
-            <ListOrderBy>Nada</ListOrderBy>
-            <ListOrderBy>
-              De <strong> menor </strong> a <strong> mayor </strong>precio
-            </ListOrderBy>
-            <ListOrderBy>
-              De <strong> mayor </strong> a <strong> menor </strong>precio
-            </ListOrderBy>
-            <ListOrderBy>
-              Más <strong> nuevos </strong> primero
-            </ListOrderBy>
-            <ListOrderBy>
-              Más <strong> viejos </strong> primero
-            </ListOrderBy>
-          </WrapOrderBy>
-        </ul>
-      </Nav>
+      <Filters
+        filterModelsBySegment={filterModelsBySegment}
+        orderBy={orderBy}
+      />
       <GridModels>
         {models.map((model) => (
           <Card
+            key={model.name}
             name={model.name}
             year={model.year}
             thumbnail={model.thumbnail}
             price={model.price}
             selected={selectedModel?.id === model.id}
             onClick={() => setSelectedModel(model)}
+            goToModelDetails={goToModelDetails}
           />
         ))}
       </GridModels>

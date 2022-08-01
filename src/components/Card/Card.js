@@ -14,13 +14,16 @@ export default function Card({
   thumbnail,
   selected,
   onClick,
+  goToModelDetails,
 }) {
   return (
     <ModelContainer onClick={onClick}>
       <Name selected={selected}>{name}</Name>
       <YearPrice>{`${year} | $${formatCurrency(price)}`}</YearPrice>
       <ThumbnailImg src={thumbnail} alt={name} />
-      {selected && <ButtonModel>Ver Modelo</ButtonModel>}
+      {selected && (
+        <ButtonModel onClick={goToModelDetails}>Ver Modelo</ButtonModel>
+      )}
     </ModelContainer>
   );
 }
