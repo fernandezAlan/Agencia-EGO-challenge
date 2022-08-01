@@ -5,7 +5,6 @@ export default function useVehicleModels() {
   const [filteredModels, setFilteredModels] = useState([]);
   const [modelsDetails, setModelsDetails] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  //const [error, setError] = useState(false);
 
   useEffect(() => {
     getAllModels().then((allModels) => {

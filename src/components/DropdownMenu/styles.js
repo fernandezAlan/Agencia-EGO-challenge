@@ -15,6 +15,9 @@ export const MenuContainer = styled.section`
     "content ."
     "extraContent extraContent";
   z-index: 2;
+  @media screen and (max-width: 600px) {
+    width: 100vw;
+  }
 `;
 
 export const Header = styled.header`

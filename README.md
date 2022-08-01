@@ -1,70 +1,41 @@
-# Getting Started with Create React App
+# CHALLENGE- Agencia EGO
+***
+    Challenge para el puesto Frontend de Agencia EGO
+    El proyecto es una aplicación web de una concesionaria de autos siguiendo el diseño propuesto en Figma.
+    El proyecto cuenta con dos vistas:
+    - Una grilla mostrando todos los modelos de vehículos disponibles y filtros correspondientes.
+    - Una vista con los detalles de un modelo de auto seleccionado.
+    Para acceder a todos los modelos de autos, se hace una llamada a API correspondiente.
+    El proyecto es responsive.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+  ## Tecnologías
+  * [React.js](https://es.reactjs.org/): Version 18.2.0
+  * [styled-components](https://styled-components.com/) Version 5.3.5
 
-## Available Scripts
 
-In the project directory, you can run:
 
-### `npm start`
+  ## Instalación
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+   Una vez clonado el proyecto necesitas instalar las dependencias necesarias con el siguiente script: 
+   ```bash
+npm install : para instalar las dependencias  necesarias
+```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Una vez instaladas todas las dependencias  puedes ejecutar el siguiente script para levantar el proyecto de forma local 
 
-### `npm test`
+ ```bash
+npm start : inicia el proyecto en modo desarrollo
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Para tener el proyecto listo para producción solo hace falta ejecutar el siguiente comando para tener el proyecto compilado y listo para deployar siguiendo los pasos necesarios según el servicio donde se desea deployar [https://create-react-app.dev/docs/deployment](https://create-react-app.dev/docs/deployment)
 
-### `npm run build`
+ ```bash
+npm run build : compila todo el proyecto para tenerlo listo para producción
+```
+## Notas
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- El proyecto fue creado con [Create React App](https://create-react-app.dev/)
+- una de las imágenes que vienen de la API llegan con una resolución menor a la planteada en el prototipo de Figma, por esto cambie el tamaño de la imagen dentro del proyecto, y como consecuencia el diseño se vio un poco afectado.
+![](/public/change_design.JPG)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

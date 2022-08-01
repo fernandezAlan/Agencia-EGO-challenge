@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const ButtonModel = styled.button`
+  font-family: "ToyotaType-Regular";
   background-color: #191919;
   color: white;
   font-size: 13px;

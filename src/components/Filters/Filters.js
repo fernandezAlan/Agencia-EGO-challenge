@@ -94,33 +94,6 @@ export default function Filters({ filterModelsBySegment, orderBy }) {
           </ItemDropdown>
         </DropdownContainer>
       </DropdownWrap>
-      {/*
-      <WrapOrderBy display={displayOrderBy}>
-        <Button onClick={() => orderBy("nothing")}>
-          <OrderByOption>Nada</OrderByOption>
-        </Button>
-        <Button>
-          <OrderByOption onClick={() => orderBy("low-cost")}>
-            De <strong> menor </strong> a <strong> mayor </strong>precio
-          </OrderByOption>
-        </Button>
-        <Button>
-          <OrderByOption onClick={() => orderBy("hight-cost")}>
-            De <strong> mayor </strong> a <strong> menor </strong>precio
-          </OrderByOption>
-        </Button>
-        <Button>
-          <OrderByOption onClick={() => orderBy("newest")}>
-            Más <strong> nuevos </strong> primero
-          </OrderByOption>
-        </Button>
-        <Button>
-          <OrderByOption onClick={() => orderBy("oldest")}>
-            Más <strong> viejos </strong> primero
-          </OrderByOption>
-        </Button>
-      </WrapOrderBy>
-      */}
     </>
   );
 }

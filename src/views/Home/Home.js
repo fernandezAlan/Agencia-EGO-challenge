@@ -16,7 +16,6 @@ import {
   TitleMenu,
 } from "./styles";
 import DropdownMenu from "../../components/DropdownMenu/DropdownMenu";
-import Loader from "../../components/Loader/Loader";
 
 export default function Home() {
   // ---- ENUMS-----------
@@ -30,7 +29,7 @@ export default function Home() {
   const [selectedView, setSelectedView] = useState(VIEWS.MODELS);
   const [modelDetails, setModelDetail] = useState(null);
   const [displayDropdownMenu, setDisplayDropdownMenu] = useState(false);
-  const { models, modelsDetails, filterModelsBySegment, orderBy, isLoading } =
+  const { models, filterModelsBySegment, orderBy, isLoading } =
     useVehicleModels();
   // -------------USE EFFECTS ---------------
   const openMenu = () => {
@@ -43,9 +42,6 @@ export default function Home() {
     setSelectedModel(models[0]);
   }, [models]);
 
-  useEffect(() => {
-    console.log("modelsDetails", { models, modelsDetails });
-  }, [models, modelsDetails]);
   const goToModelDetails = () => {
     setModelDetail(null);
     setSelectedView(VIEWS.SELECTED_MODEL);
